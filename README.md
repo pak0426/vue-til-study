@@ -22,3 +22,8 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## About Project
+
+- Vue version: 2.6.14
+- node version: v18.12.1
