@@ -7,11 +7,11 @@ export default new VueRouter({
   routes: [
     {
       path: '/login',
-      component: LoginPage,
+      component: () => import('@/views/LoginPage.vue'),
     },
     {
       path: '/signup',
-      component: SignupPage,
+      component: () => import('@/views/SignupPage.vue'),
     }
   ],
 });
