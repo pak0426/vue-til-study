@@ -1,14 +1,9 @@
 import axios from 'axios';
 
-function registerUser() {
+async function registerUser(userData) {
   const url = 'http://localhost:3000/signup';
-  return axios.post(url)
-    .then(function(response) {
-      console.log('response', response);
-    })
-    .catch(function(error) {
-      console.log('error', error);
-    })
+  const response = await axios.post(url, userData);
+  return response;
 }
 
 export { registerUser }
