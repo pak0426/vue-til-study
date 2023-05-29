@@ -1,9 +1,11 @@
 import axios from 'axios';
 
+const instance = axios.create({
+  baseURL: 'http://localhost:3000/'
+})
+
 async function registerUser(userData) {
-  const url = 'http://localhost:3000/signup';
-  const response = await axios.post(url, userData);
-  return response;
+  return instance.post('signup', userData);
 }
 
 export { registerUser }
