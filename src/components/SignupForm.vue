@@ -1,8 +1,8 @@
 <template>
   <form @submit.prevent="submitForm">
     <div>
-      <label for="username">id: </label>
-      <input id="username" type="text" v-model="username">
+      <label for="email">email: </label>
+      <input id="email" type="text" v-model="email">
     </div>
     <div>
       <label for="password">password: </label>
@@ -23,7 +23,7 @@ import { registerUser } from '@/api/index'
 export default {
   data() {
     return {
-      username: '',
+      email: '',
       password: '',
       nickname: '',
       logMessage: '',
@@ -33,17 +33,17 @@ export default {
     async submitForm() {
       console.log('폼 제출');
       const userData = {
-        username: this.username,
+        email: this.email,
         password: this.password,
         nickname : this.nickname
       }
       const { data } = await registerUser(userData);
       console.log('data', data);
-      this.logMessage = `${ data.username } 님이 가입되었습니다.`
+      this.logMessage = `${ data.email } 님이 가입되었습니다.`
       this.initForm();
     },
     initForm() {
-      this.username = '';
+      this.email = '';
       this.password = '';
       this.nickname = '';
     }
