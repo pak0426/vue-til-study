@@ -8,13 +8,14 @@
       <label for="password">pw: </label>
       <input id="password" type="text" v-model="password">
     </div>
-    <button type="submit">로그인</button>
+    <button v-bind:disabled="!isEmailValid || !password" type="submit">로그인</button>
     <p>{{ logMessage }}</p>
   </form>
 </template>
 
 <script>
-import { loginUser } from "@/api";
+import { loginUser } from '@/api';
+import { validateEmail } from '@/utils/validation'
 
 export default {
   data() {
@@ -34,12 +35,15 @@ export default {
       const { data } = await loginUser(userData);
       console.log(data);
       if (data.status !== 'FAIL') this.logMessage = `${data.nickname}님 환영합니다.`;
-      else this.logMessage = '로그인 실패. 아이디 또는 비밀번호를 확인해주세요.';
+      else this.logMessage = data.message;
       this.initForm();
     },
     initForm() {
       this.email = '';
       this.password = '';
+    },
+    isEmailValid() {
+      return validateEmail(this.email);
     }
   }
 };
