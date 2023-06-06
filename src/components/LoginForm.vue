@@ -33,7 +33,13 @@ export default {
 
       const { data } = await loginUser(userData);
       console.log(data);
-      this.logMessage = `${data.nickname}님 환영합니다.`;
+      if (data.status !== 'FAIL') this.logMessage = `${data.nickname}님 환영합니다.`;
+      else this.logMessage = '로그인 실패. 아이디 또는 비밀번호를 확인해주세요.';
+      this.initForm();
+    },
+    initForm() {
+      this.email = '';
+      this.password = '';
     }
   }
 };
