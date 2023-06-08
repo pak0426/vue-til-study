@@ -6,7 +6,7 @@
           <label for="email">email: </label>
           <input id="email" type="text" v-model="email">
           <p class="validation-text">
-            <span class="warning" v-if="!isUsernameValid && username">
+            <span class="warning" v-if="!isEmailValid && email">
               Please enter an email address
             </span>
           </p>
@@ -55,7 +55,9 @@ export default {
     initForm() {
       this.email = '';
       this.password = '';
-    },
+    }
+  },
+  computed: {
     isEmailValid() {
       return validateEmail(this.email);
     }
