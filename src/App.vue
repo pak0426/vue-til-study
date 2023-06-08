@@ -13,14 +13,10 @@ export default {
   components: {
     AppHeader
   },
-  created() {
-    console.log('THIs');
-    console.log('THIs');
-  },
 };
 </script>
 
 <style>
-#app {
-}
+@import '@/css/reset.css';
+@import '@/css/common.css';
 </style>
