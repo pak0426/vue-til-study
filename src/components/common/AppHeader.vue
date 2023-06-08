@@ -2,7 +2,7 @@
   <header>
     <div>
       <router-link to="/" class="logo">
-        TIL
+        TIL Project
       </router-link>
     </div>
     <div class="navigations">
@@ -24,7 +24,6 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #927dfc;
   z-index: 2;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.05);
 }
@@ -36,6 +35,7 @@ a.logo {
   font-size: 30px;
   font-weight: 900;
   color: white;
+  letter-spacing: 3px;
 }
 .logo > span {
   font-size: 14px;

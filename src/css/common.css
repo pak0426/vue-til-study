@@ -1,5 +1,14 @@
+* {
+    /*font-family: 'Noto Serif KR', serif;*/
+    /*font-family: 'Diphylleia', serif;*/
+    /*font-family: 'Black Han Sans', sans-serif;*/
+    /*font-family: 'Orbit', sans-serif;*/
+    /*font-family: 'Bagel Fat One', cursive;*/
+    font-family: 'Noto Sans KR', sans-serif;
+}
 body {
-    background: #F7F6F9;
+    /*background: #F7F6F9;*/
+    background-image: url("@/assets/dessert_night.jpg");
 }
 .app {
     position: relative;
@@ -12,16 +21,17 @@ body {
 }
 h1 {
     text-align: center;
-    font-weight: 100;
+    font-weight: 600;
+    color: white;
 }
 
 /*--- LINK ---*/
 a {
     color: #364f6b;
     text-decoration: none;
-}
+}e
 a:hover {
-    color: #3fc1c9;
+    color: #00000b;
 }
 
 /*--- LAYOUT ---*/
@@ -45,7 +55,7 @@ a:hover {
     align-items: center;
 }
 .form-wrapper {
-    background: white;
+    background: transparent;
     -webkit-box-shadow: 0 20px 20px rgba(0, 0, 0, 0.08);
     box-shadow: 0 20px 20px rgba(0, 0, 0, 0.08);
     border-radius: 3px;
@@ -74,8 +84,8 @@ a:hover {
     width: 100%;
     display: block;
     margin-bottom: 0.5rem;
-    color: #364f6b;
-    font-size: 90%;
+    color: white;
+    font-size: 100%;
 }
 .form input,
 .form textarea {
@@ -86,6 +96,7 @@ a:hover {
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
     padding: 0.5rem 0.75rem;
     margin-bottom: 1rem;
+    color: white;
 }
 .form input.valid {
     border: 1px solid #21b314;
@@ -97,15 +108,19 @@ a:hover {
     margin-bottom: 0.5rem;
 }
 .btn {
-    background: #FE9616;
+    background: transparent;
     padding: 0.5rem 1.5rem;
     font-weight: 700;
     border-radius: .25rem;
-    border: 0 solid #dae1e7;
+    border: 1px solid white;
+    font-size: 18px;
+    width: 100%;
+    color: white;
 }
 .btn.disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    color: #7c7a7a;
 }
 .log {
     color: #ff4057;
