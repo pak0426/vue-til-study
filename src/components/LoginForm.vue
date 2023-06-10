@@ -48,7 +48,11 @@ export default {
 
       const { data } = await loginUser(userData);
       console.log(data);
-      if (data.status !== 'FAIL') this.logMessage = `${data.nickname}님 환영합니다.`;
+      if (data.status !== 'FAIL') {
+        this.logMessage = `${data.nickname}님 환영합니다.`;
+        this.$store.commit('setUsername', data.nickname);
+        this.$router.push('/main');
+      }
       else this.logMessage = data.message;
       this.initForm();
     },
