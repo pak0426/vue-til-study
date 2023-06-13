@@ -41,20 +41,27 @@ export default {
   },
   methods: {
     async submitForm() {
-      const userData = {
-        email: this.email,
-        password: this.password,
-      };
+      try {
+        const userData = {
+          email: this.email,
+          password: this.password,
+        };
 
-      const { data } = await loginUser(userData);
-      console.log(data);
-      if (data.status !== 'FAIL') {
-        this.logMessage = `${data.nickname}님 환영합니다.`;
-        this.$store.commit('setUsername', data.nickname);
-        this.$router.push('/main');
+        const { data } = await loginUser(userData);
+        console.log(data);
+        if (data.status !== 'FAIL') {
+          this.logMessage = `${data.nickname}님 환영합니다.`;
+          this.$store.commit('setUsername', data.nickname);
+          this.$store.commit('setToken', data.tokenInfo);
+          this.$router.push('/main');
+        }
+        else this.logMessage = data.message;
+        this.initForm();
       }
-      else this.logMessage = data.message;
-      this.initForm();
+      catch (error) {
+        console.log('error', error);
+        this.logMessage = '에러가 발생했습니다. 관리자에게 문의해주세요.';
+      }
     },
     initForm() {
       this.email = '';

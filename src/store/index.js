@@ -6,6 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     username: '',
+    accessToken: '',
+    refreshToken: '',
   },
   mutations: {
     setUsername(state, username) {
@@ -13,6 +15,10 @@ export default new Vuex.Store({
     },
     clearUsername(state) {
       state.username = null;
+    },
+    setToken(state, tokenInfo) {
+      state.accessToken = tokenInfo.accessToken;
+      state.refreshToken = tokenInfo.refreshToken;
     }
   },
   getters: {
