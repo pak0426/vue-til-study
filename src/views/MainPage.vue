@@ -5,8 +5,18 @@
 </template>
 
 <script>
+import { fetchPosts } from '@/api/index'
+
 export default {
-  name: "MainPage"
+  methods: {
+    async fetchData() {
+      const response = await fetchPosts();
+      console.log('data', response);
+    }
+  },
+  created() {
+    this.fetchData();
+  }
 };
 </script>
 
