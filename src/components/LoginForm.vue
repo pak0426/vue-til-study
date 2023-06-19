@@ -48,17 +48,18 @@ export default {
         };
 
         const { data } = await loginUser(userData);
-        console.log(data);
-          console.log('data', data);
-          this.logMessage = `${data.nickname}님 환영합니다.`;
-          this.$store.commit('setUsername', data.nickname);
-
+        console.log('data', data);
         if(!data.tokenInfo) {
           this.logMessage = '에러가 발생했습니다. 관리자에게 문의해주세요.';
           return;
         }
-        window.localStorage.setItem('accessToken', 'Bearer ' + data.tokenInfo.accessToken)
-        window.localStorage.setItem('refreshToken', 'Bearer ' + data.tokenInfo.refreshToken)
+
+        this.logMessage = `${data.nickname}님 환영합니다.`;
+        this.$store.commit('setUsername', data.nickname);
+
+        window.localStorage.setItem('accessToken', 'Bearer ' + data.tokenInfo.accessToken);
+        window.localStorage.setItem('refreshToken', 'Bearer ' + data.tokenInfo.refreshToken);
+        this.$store.commit('login');
         this.$router.push('/main');
         this.initForm();
       }
