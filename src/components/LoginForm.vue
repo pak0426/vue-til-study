@@ -49,18 +49,29 @@ export default {
 
         const { data } = await loginUser(userData);
         console.log(data);
-        if (data.status !== 'FAIL') {
+          console.log('data', data);
           this.logMessage = `${data.nickname}님 환영합니다.`;
           this.$store.commit('setUsername', data.nickname);
-          this.$store.commit('setToken', data.tokenInfo);
-          this.$router.push('/main');
+
+        if(!data.tokenInfo) {
+          this.logMessage = '에러가 발생했습니다. 관리자에게 문의해주세요.';
+          return;
         }
-        else this.logMessage = data.message;
+        window.localStorage.setItem('accessToken', 'Bearer ' + data.tokenInfo.accessToken)
+        window.localStorage.setItem('refreshToken', 'Bearer ' + data.tokenInfo.refreshToken)
+        this.$router.push('/main');
         this.initForm();
       }
       catch (error) {
         console.log('error', error);
-        this.logMessage = '에러가 발생했습니다. 관리자에게 문의해주세요.';
+        const { data } = error.response;
+
+        if(!data) {
+          this.logMessage = '에러가 발생했습니다. 관리자에게 문의해주세요.';
+          return;
+        }
+
+        this.logMessage = data.message;
       }
     },
     initForm() {

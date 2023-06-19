@@ -8,7 +8,7 @@
     </div>
     <div class="navigations">
       <template v-if="isLogin">
-        <a href="javascript:;" @click="logoutUser" class="logout-button">로그아웃</a>
+        <a href="javascript:;" @click="logout" class="logout-button">로그아웃</a>
       </template>
       <template v-else>
         <router-link to="/login">로그인</router-link>
@@ -27,8 +27,8 @@ export default {
     }
   },
   methods: {
-    logoutUser() {
-      this.$store.commit('clearUsername');
+    logout() {
+      this.$store.commit('logout');
       this.$router.push('/');
     }
   }

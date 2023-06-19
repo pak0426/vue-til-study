@@ -1,12 +1,12 @@
-import store from '@/store/index';
 
 export function setInterceptors(instance) {
   // Add a request interceptor
   instance.interceptors.request.use(
     function(config) {
-    config.headers.Authorization = store.state.accessToken ? 'Bearer ' + store.state.accessToken : '';
+    config.headers.Authorization = window.localStorage.getItem('accessToken');
     return config;
   }, function(error) {
+      console.log('interceptor', error);
     return Promise.reject(error);
   });
 
