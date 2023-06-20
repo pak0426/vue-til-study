@@ -1,0 +1,23 @@
+<template>
+  <li>
+    <div class="post-title">{{ postItem.title }}</div>
+    <div class="post-contents">{{ postItem.contents }}</div>
+    <div class="post-time">{{ postItem.createdDate }}</div>
+  </li>
+</template>
+
+<script>
+export default {
+  props: {
+    postItem: {
+      type: Object,
+      require: true
+    }
+  }
+}
+</script>
+
+
+<style scoped>
+
+</style>

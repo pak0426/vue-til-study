@@ -2,32 +2,42 @@
   <div>
     <div class="main list-container contents">
       <h1 class="page-header">Today I Learned</h1>
-      <ul>
-        <li v-for="postItem in postItems" :key="postItem.id">
-          <div class="post-title">{{ postItem.title }}</div>
-          <div class="post-contents">{{ postItem.contents }}</div>
-          <div class="post-time">{{ postItem.createdDate }}</div>
-        </li>
+      <LoadingSpinner v-if="isLoading"></LoadingSpinner>
+      <ul v-else>
+        <PostListItem
+          v-for="postItem in postItems"
+          :key="postItem.id"
+          :postItem="postItem"
+        ></PostListItem>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+import PostListItem from '@/components/posts/PostListItem.vue'
+import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
 import { fetchPosts } from '@/api/index'
 
 export default {
+  components: {
+    PostListItem,
+    LoadingSpinner,
+  },
   data() {
     return {
-      postItems: []
+      postItems: [],
+      isLoading: false,
     }
   },
   methods: {
     async fetchData() {
+      this.isLoading = true;
       const { data } = await fetchPosts();
       console.log('data', data);
 
       this.postItems = data;
+      this.isLoading = false;
     }
   },
   created() {
