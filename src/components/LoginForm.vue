@@ -57,8 +57,8 @@ export default {
         this.logMessage = `${data.nickname}님 환영합니다.`;
         this.$store.commit('setUsername', data.nickname);
 
-        window.localStorage.setItem('accessToken', 'Bearer ' + data.tokenInfo.accessToken);
-        window.localStorage.setItem('refreshToken', 'Bearer ' + data.tokenInfo.refreshToken);
+        window.localStorage.setItem('accessToken', data.tokenInfo.grantType + ' ' + data.tokenInfo.accessToken);
+        window.localStorage.setItem('refreshToken', data.tokenInfo.grantType + ' ' + data.tokenInfo.refreshToken);
         this.$store.commit('login');
         this.$router.push('/main');
         this.initForm();

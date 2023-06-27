@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     username: '',
-    isLogin: false,
+    isLogin: !!window.localStorage.getItem('accessToken'),
   },
   mutations: {
     setUsername(state, username) {
@@ -19,9 +19,10 @@ export default new Vuex.Store({
       window.localStorage.removeItem('accessToken');
       window.localStorage.removeItem('refreshToken');
       state.username = null;
+      state.isLogin = false;
     },
     login(state) {
-      state.isLogin = true;
+      state.isLogin = window.localStorage.getItem('accessToken');
     }
   },
   getters: {
