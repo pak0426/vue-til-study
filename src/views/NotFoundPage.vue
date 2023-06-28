@@ -1,6 +1,8 @@
 <template>
   <div>
-    Page Not Found
+    <h1 class="notFound">
+      Page Not Found
+    </h1>
   </div>
 </template>
 
@@ -11,5 +13,7 @@ export default {
 </script>
 
 <style scoped>
-
+.notFound {
+  color: white;
+}
 </style>
