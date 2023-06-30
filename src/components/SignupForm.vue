@@ -36,7 +36,6 @@ export default {
   },
   methods: {
     async submitForm() {
-      console.log('폼 제출');
       const userData = {
         email: this.email,
         password: this.password,

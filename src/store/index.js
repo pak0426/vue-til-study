@@ -37,7 +37,6 @@ export default new Vuex.Store({
       this.logMessage = `${data.nickname}님 환영합니다.`;
       commit('setUsername', data.nickname);
 
-      console.log('this');
       window.localStorage.setItem('accessToken', data.tokenInfo.grantType + ' ' + data.tokenInfo.accessToken);
       window.localStorage.setItem('refreshToken', data.tokenInfo.grantType + ' ' + data.tokenInfo.refreshToken);
       commit('login');
