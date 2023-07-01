@@ -22,7 +22,7 @@ function fetchPosts() {
 }
 
 function createPost(postData) {
-  return instance.get('posts', postData);
+  return instance.post('posts', postData);
 }
 
 
