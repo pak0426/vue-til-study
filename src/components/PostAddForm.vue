@@ -23,7 +23,7 @@
 
 <script>
 import VueJwtDecode from 'vue-jwt-decode';
-import { createPost } from '@/api';
+import { createPost } from '@/api/posts';
 
 export default {
   data() {
