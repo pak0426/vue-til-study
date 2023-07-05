@@ -168,7 +168,7 @@ a:hover {
     bottom: 4px;
     right: 5px;
     font-size: 14px;
-    color: #9e9e9e;
+    color: rgba(31, 30, 30, 0.93);
 }
 .icon {
     font-size: 1.3rem;
