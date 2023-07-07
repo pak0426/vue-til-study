@@ -15,7 +15,6 @@
 
 <script>
 import { deletePost } from '@/api/posts';
-import VueJwtDecode from "vue-jwt-decode";
 
 export default {
   props: {
@@ -27,15 +26,12 @@ export default {
   methods: {
     async deleteItem() {
       console.log('delete');
-      const postData = {
-        id: this.postItem.id,
-        member_id: VueJwtDecode.decode(window.localStorage.getItem('accessToken').replace('Bearer ', '')).sub
-      };
-      console.log('postData', postData);
-
       try {
-        const response = await deletePost(postData);
-        console.log('response', response);
+        if (confirm('Are you want to delete it?')) {
+          const response = await deletePost(this.postItem.id);
+          this.$emit('refresh');
+          console.log('response', response);
+        }
       }
       catch (e) {
         console.log('error', e);

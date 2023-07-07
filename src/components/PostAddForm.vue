@@ -50,8 +50,9 @@ export default {
       try {
         const { data } = await createPost(postData);
         console.log('submit post response', data);
-        this.logMessage = data.message;
-      }catch (e) {
+        alert(data.message);
+        this.$router.push('/main');
+      } catch (e) {
         console.log('e', e);
       }
     }
