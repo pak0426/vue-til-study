@@ -3,7 +3,7 @@
     <div class="post-title">{{ postItem.title }}</div>
     <div class="post-contents">{{ postItem.contents }}</div>
     <div class="post-time">{{ postItem.createdDate }}
-      <i class="icon ion-md-create">
+      <i class="icon ion-md-create" @click="editItem">
         <ion-icon name="create-outline" size="small"></ion-icon>
       </i>
       <i class="icon ion-md-create">
@@ -36,6 +36,10 @@ export default {
       catch (e) {
         console.log('error', e);
       }
+    },
+    editItem() {
+      console.log('update');
+      this.$router.push('post/1');
     }
   }
 }
