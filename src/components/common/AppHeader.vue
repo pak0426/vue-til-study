@@ -1,10 +1,10 @@
 <template>
   <header>
     <div>
-      <router-link to="/" class="logo">
+      <a href="javascript:;" class="logo">
         TIL Project
         <span v-if="isLogin">by {{ $store.state.username }}</span>
-      </router-link>
+      </a>
     </div>
     <div class="navigations">
       <template v-if="isLogin">

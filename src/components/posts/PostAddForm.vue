@@ -1,6 +1,6 @@
 <template>
   <div class="contents">
-    <h1 class="page-header">생성 페이지</h1>
+    <h1 class="page-header">Create Post</h1>
     <div class="form-wrapper">
       <form class="form" @submit.prevent="submitForm">
         <div>
