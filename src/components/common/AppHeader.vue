@@ -1,7 +1,7 @@
 <template>
   <header>
     <div>
-      <a href="javascript:;" class="logo">
+      <a href="javascript:;" class="logo" @click="clickLogo">
         TIL Project
         <span v-if="isLogin">by {{ $store.state.username }}</span>
       </a>
@@ -31,6 +31,14 @@ export default {
       this.$store.commit('logout');
       this.$router.push('/');
     },
+    clickLogo() {
+      if (this.$store.getters.isLogin) {
+        this.$router.push('/main').catch(() => {});
+      }
+      else {
+        this.$router.push('/').catch(() => {});
+      }
+    }
   }
 };
 </script>

@@ -12,4 +12,8 @@ function deletePost(postId) {
   return posts.delete('/' + postId);
 }
 
-export { fetchPosts, createPost, deletePost }
+function fetchPost(postId) {
+  return posts.get('/' + postId)
+}
+
+export { fetchPosts, createPost, deletePost, fetchPost }

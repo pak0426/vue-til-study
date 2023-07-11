@@ -38,8 +38,8 @@ export default {
       }
     },
     editItem() {
-      console.log('update');
-      this.$router.push('post/1');
+      const postId = this.postItem.id;
+      this.$router.push(`post/${postId}`);
     }
   }
 }
