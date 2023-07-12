@@ -16,4 +16,8 @@ function fetchPost(postId) {
   return posts.get('/' + postId)
 }
 
-export { fetchPosts, createPost, deletePost, fetchPost }
+function editPost(postData) {
+  return posts.put('/', postData);
+}
+
+export { fetchPosts, createPost, deletePost, fetchPost, editPost }

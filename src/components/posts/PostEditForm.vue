@@ -2,7 +2,7 @@
   <div class="contents">
     <h1 class="page-header">Edit Post</h1>
     <div class="form-wrapper">
-      <form class="form" @submit.prevent="submitForm">
+      <form class="form" @submit.prevent="editPost">
         <div>
           <label for="title">Title:</label>
           <input id="title" type="text" v-model="title">
@@ -22,14 +22,15 @@
 </template>
 
 <script>
-import { fetchPost } from '@/api/posts';
+import { fetchPost, editPost } from '@/api/posts';
 
 export default {
   data() {
     return {
+      id: '',
+      member_id: '',
       title: '',
       contents: '',
-      member_id: '',
       logMessage: '',
     }
   },
@@ -39,8 +40,22 @@ export default {
     },
   },
   methods: {
-    submitForm() {
+    async editPost() {
+      const postData = {
+        'id': this.id,
+        'member_id': this.member_id,
+        'title': this.title,
+        'contents': this.contents
+      }
 
+      try {
+        const { data }  = await editPost(postData);
+        console.log('data', data);
+        if (data.status === 'SUCCESS') this.logMessage = data.message;
+        this.$router.push('/main');
+      } catch (error) {
+        console.log('error', error);
+      }
     },
     async fetchPost() {
       const postId = this.$route.params.id;
@@ -49,6 +64,8 @@ export default {
         const { data } = await fetchPost(postId);
         console.log('data', data);
 
+        this.id = data.id;
+        this.member_id = data.member_id;
         this.title = data.title;
         this.contents = data.contents;
       } catch (e) {
