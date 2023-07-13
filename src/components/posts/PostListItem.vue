@@ -2,7 +2,7 @@
   <li>
     <div class="post-title">{{ postItem.title }}</div>
     <div class="post-contents">{{ postItem.contents }}</div>
-    <div class="post-time">{{ postItem.createdDate }}
+    <div class="post-time">{{ postItem.createdDate | formatDate }}
       <i class="icon ion-md-create" @click="editItem">
         <ion-icon name="create-outline" size="small"></ion-icon>
       </i>
@@ -40,6 +40,12 @@ export default {
     editItem() {
       const postId = this.postItem.id;
       this.$router.push(`post/${postId}`);
+    }
+  },
+  filters: {
+    formatingDate: function(date) {
+      if (!date) return;
+      return date.substring(0,10);
     }
   }
 }
