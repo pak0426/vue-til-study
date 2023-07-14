@@ -1,10 +1,10 @@
 <template>
   <header>
     <div>
-      <a href="javascript:;" class="logo" @click="clickLogo">
+      <router-link :to="logoLink" class="logo">
         TIL Project
         <span v-if="isLogin">by {{ $store.state.username }}</span>
-      </a>
+      </router-link>
     </div>
     <div class="navigations">
       <template v-if="isLogin">
@@ -23,7 +23,10 @@ export default {
   name: "AppHeader",
   computed: {
     isLogin() {
-      return this.$store.getters.isLogin;
+      return this.$store.state.isLogin;
+    },
+    logoLink() {
+      return this.$store.getters.isLogin ? '/main' : '/login';
     }
   },
   methods: {
@@ -31,14 +34,6 @@ export default {
       this.$store.commit('logout');
       this.$router.push('/');
     },
-    clickLogo() {
-      if (this.$store.getters.isLogin) {
-        this.$router.push('/main').catch(() => {});
-      }
-      else {
-        this.$router.push('/').catch(() => {});
-      }
-    }
   }
 };
 </script>

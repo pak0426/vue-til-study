@@ -47,7 +47,7 @@ export default {
         };
 
         this.logMessage = await this.$store.dispatch('LOGIN', userData);
-        this.$router.push('/main');
+        this.$router.push('/main').catch(() => {});
         this.initForm();
       }
       catch (error) {
