@@ -19,7 +19,8 @@ describe('LoginForm.vue', () => {
     const wrapper = shallowMount(LoginForm, {
       data() {
         return {
-          email: 'test'
+          // email: 'test' //isEmailValid: false
+          email: 'test@test.com' //isEmailValid: true
         }
       }
     });
@@ -28,5 +29,6 @@ describe('LoginForm.vue', () => {
     console.log('inputEmail', inputEmail.html());
 
     console.log(inputEmail.element.value);
+    console.log(wrapper.vm.isEmailValid);
   })
 })
