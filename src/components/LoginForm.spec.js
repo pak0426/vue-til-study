@@ -12,4 +12,13 @@ describe('LoginForm.vue', () => {
     expect(wrapper.vm).toBeTruthy();
     expect(wrapper.vm.email).toBe('');
   })
+});
+
+describe('LoginForm.vue', () => {
+  test('ID는 이메일 형식이어야 한다.', () => {
+    const wrapper = shallowMount(LoginForm);
+    const inputEmail = wrapper.find('#email');
+    console.log('inputEmail', inputEmail);
+    console.log('inputEmail', inputEmail.html());
+  })
 })
