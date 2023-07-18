@@ -19,8 +19,8 @@ describe('LoginForm.vue', () => {
     const wrapper = shallowMount(LoginForm, {
       data() {
         return {
-          // email: 'test' //isEmailValid: false
-          email: 'test@test.com' //isEmailValid: true
+          email: 'test' //isEmailValid: false
+          // email: 'test@test.com' //isEmailValid: true
         }
       }
     });
@@ -30,5 +30,10 @@ describe('LoginForm.vue', () => {
 
     console.log(inputEmail.element.value);
     console.log(wrapper.vm.isEmailValid);
+
+    const waringText = wrapper.find('.warning');
+    console.log('waringText', waringText);
+    console.log('waringText', waringText.html());
+    expect(waringText.exists()).toBeTruthy();
   })
 })
