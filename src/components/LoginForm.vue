@@ -18,6 +18,7 @@
         <button v-bind:disabled="!isEmailValid || !password"
                 type="submit"
                 class="btn"
+                :class="!isEmailValid || !password ? 'disabled' : null"
         >
           로그인
         </button>

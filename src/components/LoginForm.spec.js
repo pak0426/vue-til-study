@@ -35,5 +35,23 @@ describe('LoginForm.vue', () => {
     console.log('waringText', waringText);
     console.log('waringText', waringText.html());
     expect(waringText.exists()).toBeTruthy();
-  })
-})
+  });
+
+  test('ID와 PW를 입력되지 않으면 로그인 버튼이 비활성화된다.', () => {
+    const wrapper = shallowMount(LoginForm, {
+      data() {
+        return {
+          email: '',
+          password: '',
+        }
+      },
+    })
+
+    const loginButton = wrapper.find('.btn');
+    console.log('loginButton', loginButton);
+    console.log('loginButton', loginButton.html());
+
+    expect(loginButton.element.disabled).toBeTruthy();
+
+  });
+});
