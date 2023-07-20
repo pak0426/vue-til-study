@@ -5,6 +5,11 @@
         <div>
           <label for="email">email: </label>
           <input id="email" type="text" v-model="email">
+          <p class="validation-text">
+            <span class="warning" v-if="!isEmailValid && email">
+              Please enter an email address
+            </span>
+          </p>
         </div>
         <div>
           <label for="password">password: </label>
@@ -14,7 +19,12 @@
           <label for="nickname">nickname: </label>
           <input id="nickname" type="text" v-model="nickname">
         </div>
-        <button v-bind:disabled="!isEmailValid || !password || !nickname" type="submit" class="btn">회원 가입</button>
+        <button v-bind:disabled="!isEmailValid || !password || !nickname"
+                type="submit" class="btn"
+                :class = "!isEmailValid || !password || !nickname ? 'disabled' : null"
+        >
+          회원 가입
+        </button>
       </form>
       <p class="log">{{ logMessage }}</p>
     </div>
