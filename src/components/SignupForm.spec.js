@@ -6,7 +6,7 @@ describe('SignupForm.vue', () => {
     const wrapper = shallowMount(SignupForm, {
       data() {
         return {
-          email: 'abc',
+          email: 'abc@a.com',
           password: '',
           nickname: ''
         }
@@ -17,4 +17,22 @@ describe('SignupForm.vue', () => {
     console.log('waringText', waringText.html());
     expect(waringText.exists()).toBeTruthy();
   });
+
+  test('ID, PW, Nickname 이 입력되어야 회원가입 버튼이 활성화 된다.', () => {
+    const wrapper = shallowMount(SignupForm, {
+      data() {
+        return {
+          email: 'a@a.com',
+          password: '1234',
+          nickname: ''
+        }
+      },
+    })
+
+    const signupButton = wrapper.find('.btn');
+    console.log('signupButton', signupButton);
+    console.log('signupButton', signupButton.html());
+
+    expect(signupButton.element.disabled).toBeTruthy();
+  })
 })
