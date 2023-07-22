@@ -6,13 +6,25 @@
         <div>
           <label for="title">Title:</label>
           <input id="title" type="text" v-model="title">
+          <p class="validation-text">
+            <span class="warning" v-if="!title">
+              Please enter an title
+            </span>
+          </p>
         </div>
         <div>
           <label for="contents">Contents:</label>
           <textarea id="contents" rows="10" v-model="contents"></textarea>
           <p v-if="!isContentsValid" class="validation-text warning">Contents is too long</p>
         </div>
-        <button type="submit" class="btn">Create</button>
+        <button
+          v-bind:disabled="!title"
+          type="submit"
+          class="btn"
+          :class="!title ? 'disabled' : null"
+        >
+          Create
+        </button>
       </form>
       <p class="log">
         {{ logMessage }}
