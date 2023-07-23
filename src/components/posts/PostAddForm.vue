@@ -21,7 +21,7 @@
           v-bind:disabled="!title"
           type="submit"
           class="btn"
-          :class="!title ? 'disabled' : null"
+          :class="!title || !isContentsValid ? 'disabled' : null"
         >
           Create
         </button>
